@@ -10,8 +10,8 @@ public class followPlayer : MonoBehaviour
     {
         cameraOffset = player.transform.position - this.transform.position; // Offset defined once whenever we run the game
     }
-    void FixedUpdate()
+    void Update()
     {
-        this.transform.position = player.transform.position - cameraOffset; // Defined offset used to constantly update
+        this.transform.position = player.transform.position - cameraOffset; // Previously defined offset used to constantly update
     }
 }
