@@ -24,6 +24,6 @@ public class playerMovement : MonoBehaviour
         xInput = Input.GetAxis("Horizontal");
         zInput = Input.GetAxis("Vertical");
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(xInput*speed, 0, zInput*speed,ForceMode.Impulse);
+        rb.AddForce(xInput * speed, 0, zInput * speed, ForceMode.Impulse);
     }
 }
