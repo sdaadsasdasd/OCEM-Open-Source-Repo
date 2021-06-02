@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 862725187}
   - component: {fileID: 862725186}
   - component: {fileID: 862725185}
+  - component: {fileID: 862725184}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -142,6 +143,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &862725184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862725183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4b9092e5b3b7c4b8a5a47b31bc9765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 20
 --- !u!136 &862725185
 CapsuleCollider:
   m_ObjectHideFlags: 0
