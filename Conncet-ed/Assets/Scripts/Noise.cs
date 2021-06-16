@@ -1,4 +1,6 @@
 using System;
+
+//This is an open source code that creates noise maps
 public class Noise
 {
     #region Values

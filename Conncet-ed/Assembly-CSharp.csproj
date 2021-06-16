@@ -38,15 +38,14 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\followPlayer.cs" />
      <Compile Include="Assets\Scripts\playerController.cs" />
+     <Compile Include="Assets\Scripts\Events.cs" />
+     <Compile Include="Assets\Scripts\WorldData.cs" />
+     <Compile Include="Assets\Scripts\Noise.cs" />
+     <Compile Include="Assets\Scripts\ChunkHandler.cs" />
+     <Compile Include="Assets\Scripts\UVariables.cs" />
      <Compile Include="Assets\Scripts\playerMovement.cs" />
      <Compile Include="Assets\Scripts\cameraController.cs" />
      <Compile Include="Assets\Scripts\rotateCoin.cs" />
-     <Compile Include="Assets\Scripts\CharacterScript.cs" />
-     <Compile Include="Assets\Scripts\ChunkHandler.cs" />
-     <Compile Include="Assets\Scripts\Events.cs" />
-     <Compile Include="Assets\Scripts\Noise.cs" />
-     <Compile Include="Assets\Scripts\UVariables.cs" />
-     <Compile Include="Assets\Scripts\WorldData.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity Editors/2020.3.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

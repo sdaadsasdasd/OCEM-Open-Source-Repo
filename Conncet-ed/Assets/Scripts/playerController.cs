@@ -12,21 +12,19 @@ public class playerController : MonoBehaviour
 
     private Vector3 moveDirection;
 
-    Events events;
+    
     Vector2Int currentChunk;
-
+    [SerializeField] private Events events;
     [SerializeField] private CharacterController controller;
     private Vector3 velocity;
 
     void Start()
     {
-        events = FindObjectOfType<Events>();
-
         currentChunk = CurrentChunk();
         events.MovedChunk(CurrentChunk());
     }
 
-    private Vector2Int CurrentChunk(){
+    private Vector2Int CurrentChunk(){//Looks at coordinates to determine the chunk its in
 
         Vector3 playerPos = this.transform.position;
         Vector2Int playerChunk = Vector2Int.RoundToInt(new Vector2(playerPos.x, playerPos.z)) / 10;
@@ -34,7 +32,7 @@ public class playerController : MonoBehaviour
         return playerChunk;
     }
 
-    private void ChunkCheck(){
+    private void ChunkCheck(){//Checks if the player has moved from a chunk
 
         Vector2Int playerChunk = CurrentChunk();
         if(playerChunk.x != currentChunk.x || playerChunk.y != currentChunk.y){

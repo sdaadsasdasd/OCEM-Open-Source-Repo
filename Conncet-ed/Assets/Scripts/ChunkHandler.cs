@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class ChunkHandler : MonoBehaviour
 {
-    Events events;
+    [SerializeField]private Events events;
     public Material ground;
     int loadDist = UVariables.chunkViewDist;
     Noise noise = new Noise();
@@ -12,11 +12,9 @@ public class ChunkHandler : MonoBehaviour
     private void OnEnable()
     {
         map = new GameObject("map");
-        events = FindObjectOfType<Events>();
         events.movedChunk += LoadChunks;
         events.movedChunk += UnloadChunks;
     }
-
 
     private void LoadChunks(Vector2Int currentChunk){
 

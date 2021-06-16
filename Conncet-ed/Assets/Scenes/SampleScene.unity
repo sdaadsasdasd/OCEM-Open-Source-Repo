@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57597f6fe96554349a08e97214eeab10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  events: {fileID: 1345406702}
   ground: {fileID: 2100000, guid: a25a262f1dc7995439dd5636e7789e78, type: 2}
 --- !u!4 &1345406704
 Transform:
@@ -342,6 +343,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5531799071664642034, guid: e2df01bd5819c3040a92cb254fce2463, type: 3}
+      propertyPath: events
+      value: 
+      objectReference: {fileID: 1345406702}
     - target: {fileID: 5531799071664642034, guid: e2df01bd5819c3040a92cb254fce2463, type: 3}
       propertyPath: controller
       value: 
