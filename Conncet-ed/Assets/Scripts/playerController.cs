@@ -11,21 +11,65 @@ public class playerController : MonoBehaviour
     CollisionFlags x;
 
     private Vector3 moveDirection;
+
+    
+    Vector2Int currentChunk;
+    [SerializeField] private Events events;
+    [SerializeField] private CharacterController controller;
+    private Vector3 velocity;
+
+    void Start()
+    {
+        currentChunk = CurrentChunk();
+        events.MovedChunk(CurrentChunk());
+    }
+
+    private Vector2Int CurrentChunk(){//Looks at coordinates to determine the chunk its in
+
+        Vector3 playerPos = this.transform.position;
+        Vector2Int playerChunk = Vector2Int.RoundToInt(new Vector2(playerPos.x, playerPos.z)) / 10;
+
+        return playerChunk;
+    }
+
+    private void ChunkCheck(){//Checks if the player has moved from a chunk
+
+        Vector2Int playerChunk = CurrentChunk();
+        if(playerChunk.x != currentChunk.x || playerChunk.y != currentChunk.y){
+
+            currentChunk = playerChunk;
+            events.MovedChunk(playerChunk);
+        }
+    }
+
     void Update()
     {
-        CharacterController controller = GetComponent<CharacterController>();                           // We use this to control our player
-        if (controller.isGrounded)                                                                      // Don't wanna move around/jump again in air
+        Vector3 desired = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        desired = transform.TransformDirection(desired).normalized;
+        desired *= speed;
+
+        if (controller.isGrounded)
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
+            velocity.y = 0;
             if (Input.GetButton("Jump"))
             {
-                moveDirection.y = jumpSpeed;
+                velocity.y = jumpSpeed;
             }
+            velocity.x = desired.x;
+            velocity.z = desired.z;
         }
-        moveDirection.y -= gravity * Time.deltaTime;                                                    // Gravity always applies
-        x = controller.Move(moveDirection * Time.deltaTime);
-        Debug.Log(x);
+        else
+        {
+            velocity.x += desired.x * 0.01f;
+            velocity.z += desired.z * 0.01f;
+        }
+        if(transform.position.y < -50)
+        {
+            velocity.y = 50;
+        }
+        // Gravity always applies
+        velocity.y -= gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+        ChunkCheck();
     }
 }
