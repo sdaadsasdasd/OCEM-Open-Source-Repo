@@ -53,7 +53,7 @@ public class Events : MonoBehaviour
 {
     public event Action<Vector2Int> movedChunk;
 
-    public void MovedChunk(Vector2Int chunkID){
+    public void startMovedChunk(Vector2Int chunkID){
         if(chunkID != null && movedChunk != null){
             movedChunk(chunkID);
         }

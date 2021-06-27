@@ -20,8 +20,8 @@ public class playerController : MonoBehaviour
 
     void Start()
     {
-        currentChunk = CurrentChunk();
-        events.MovedChunk(CurrentChunk());
+        //currentChunk = CurrentChunk();
+        //events.MovedChunk(CurrentChunk());
     }
 
     private Vector2Int CurrentChunk(){//Looks at coordinates to determine the chunk its in
@@ -38,7 +38,7 @@ public class playerController : MonoBehaviour
         if(playerChunk.x != currentChunk.x || playerChunk.y != currentChunk.y){
 
             currentChunk = playerChunk;
-            events.MovedChunk(playerChunk);
+            //events.MovedChunk(playerChunk);
         }
     }
 
@@ -70,6 +70,6 @@ public class playerController : MonoBehaviour
         // Gravity always applies
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-        ChunkCheck();
+        //ChunkCheck();
     }
 }

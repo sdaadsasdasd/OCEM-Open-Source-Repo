@@ -87,6 +87,9 @@ namespace StarterAssets
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 
+		private Vector2Int currentChunk;
+    	[SerializeField] private Events events;
+
 		private const float _threshold = 0.01f;
 
 		private bool _hasAnimator;
@@ -105,6 +108,9 @@ namespace StarterAssets
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
+			
+			currentChunk = CurrentChunk();
+        	events.startMovedChunk(CurrentChunk());
 
 			AssignAnimationIDs();
 
@@ -125,7 +131,26 @@ namespace StarterAssets
 		private void LateUpdate()
 		{
 			CameraRotation();
+			ChunkCheck();
 		}
+
+		private Vector2Int CurrentChunk(){//Looks at coordinates to determine the chunk the char is in
+
+        	Vector3 playerPos = this.transform.position;
+        	Vector2Int playerChunk = Vector2Int.RoundToInt(new Vector2(playerPos.x, playerPos.z)) / 10;
+
+        	return playerChunk;
+    	}
+
+		private void ChunkCheck(){//Checks if the player has moved from a chunk
+
+        	Vector2Int playerChunk = CurrentChunk();
+        	if(playerChunk.x != currentChunk.x || playerChunk.y != currentChunk.y){
+
+            	currentChunk = playerChunk;
+            	events.startMovedChunk(playerChunk);
+        	}
+    	}	
 
 		private void AssignAnimationIDs()
 		{

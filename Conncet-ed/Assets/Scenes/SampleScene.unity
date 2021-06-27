@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597a2926bff175c46b0e9626cbf330f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentChunk: {x: 0, y: 0}
   events: {fileID: 1345406702}
 --- !u!1 &844846847
 GameObject:
@@ -323,7 +324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.375
+      value: 26.375
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -368,8 +369,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1345406704}
-  - component: {fileID: 1345406703}
   - component: {fileID: 1345406702}
+  - component: {fileID: 1345406705}
+  - component: {fileID: 1345406703}
   m_Layer: 0
   m_Name: _mind
   m_TagString: Untagged
@@ -398,11 +400,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1345406701}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57597f6fe96554349a08e97214eeab10, type: 3}
+  m_Script: {fileID: 11500000, guid: 2779a1a1407f6a44691b5adc17bbf8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  events: {fileID: 1345406702}
-  ground: {fileID: 2100000, guid: a25a262f1dc7995439dd5636e7789e78, type: 2}
+  tree_1: {fileID: 7968057190018740758, guid: 6abc4382dfa187d43a8b2af732c7cf30, type: 3}
+  grass_Tall: {fileID: 6260151042582698905, guid: 91de27cc5beb7284b998121e2e89a95c, type: 3}
+  grass_Short: {fileID: 6784047179078962865, guid: e951e6d1d234b9547a0f771b98cfcad6, type: 3}
+  rock: {fileID: 8623240297821024694, guid: 0e2c8c66759c76444b881f76d8153694, type: 3}
+  flower_1: {fileID: 816742121450866999, guid: 183ac8f8a4daf3041aed3be35ca2758e, type: 3}
+  flower_2: {fileID: 666866771022916464, guid: e35639598afe67d408003c8dc5b216fc, type: 3}
+  flower_3: {fileID: 1917347457978819493, guid: 86c8ec398664b4e40911a2a49252c0f9, type: 3}
+  parent: {fileID: 1345406701}
 --- !u!4 &1345406704
 Transform:
   m_ObjectHideFlags: 0
@@ -417,6 +425,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1345406705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345406701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97d340daf6d8a54293d839b5960427b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  events: {fileID: 1345406702}
+  floraHandler: {fileID: 1345406703}
+  ground: {fileID: 2100000, guid: b61cef228783f25429a90849b062af13, type: 2}
+  seed: 0
 --- !u!1 &1548617659
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.375
+      value: 26.375
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10423,7 +10447,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4416926082958048338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8338988565202126094}
@@ -10674,6 +10698,7 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  events: {fileID: 1345406702}
 --- !u!114 &4416926082958048350
 MonoBehaviour:
   m_ObjectHideFlags: 0
