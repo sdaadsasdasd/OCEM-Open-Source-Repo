@@ -95,4 +95,9 @@ public class UIController : MonoBehaviour
     {
         return menuVisible;
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
