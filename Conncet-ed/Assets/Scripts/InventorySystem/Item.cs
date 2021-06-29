@@ -33,4 +33,9 @@ public class Item : ScriptableObject
         return _category;
     }
 
+    public virtual void Use()
+    {
+
+    }
+
 }
