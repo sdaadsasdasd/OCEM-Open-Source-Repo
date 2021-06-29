@@ -6,17 +6,12 @@ public class ChunkHandler : MonoBehaviour
 {
     [SerializeField]private Events events;
     [SerializeField]private FloraHandler floraHandler;
+    [SerializeField]private BiomeHandler biomeHandler;
     [SerializeField]private Material ground;
 
     int loadDist = UVariables.chunkViewDist;
 
-    [SerializeField]private int seed;
-    
-    Noise mapNoise;
-    Noise biomeNoise;
-    NoiseHandler noiseHandler = new NoiseHandler();
     GameObject map;
-    BiomeType seaBiome;
 
     enum FoilageObject{
         Tree_1,
@@ -32,14 +27,10 @@ public class ChunkHandler : MonoBehaviour
     private void OnEnable()
     {
         map = new GameObject("map");
-
-        mapNoise = new Noise(seed);
-        biomeNoise = new Noise(seed + 1);
         
 
         BlocksTypes.initializeBlocks();
-        Biomes.initializeBiomes();
-        seaBiome = Biomes.biomeTypes[2];
+        BiomeHandler.initializeBiomes();
 
         events.movedChunk += LoadChunks;
         events.movedChunk += UnloadChunks;
@@ -61,7 +52,7 @@ public class ChunkHandler : MonoBehaviour
                     if(WorldData.loadedChunks.TryGetValue(chunkPos, out chunk)){ //Check if chunk was generated before
                         if(chunk.chunkObject == null){
 
-                            InitializeChunk(ref chunk, chunkPos * 10, chunk.chunkMesh, x, z);
+                            RenderChunk(ref chunk, chunkPos * 10, chunk.chunkMesh, x, z);
                             WorldData.renderedChunks.Add(chunk); 
                         }
                     } else {                                                    
@@ -69,14 +60,13 @@ public class ChunkHandler : MonoBehaviour
                         chunk = new Chunk(); //Generate and add to dictionary
 
                         AddBlockCoordsToDictionary(chunkPos * 10, ref chunk);
-                        GenerateForestBiome(chunkPos);
-                        GenerateChunkInfo(chunkPos * 10, UVariables.chunkSize, false);
+                        biomeHandler.generateChunkInfo(chunkPos * 10, UVariables.chunkSize, false);
 
-                        chunk.chunkMesh = customMesh(GenerateChunkInfo(chunkPos * 10, UVariables.chunkSize + 1, true), 1 + (UVariables.chunkSize * 2), UVariables.chunkHeight, 1f);
+                        chunk.chunkMesh = customMesh(biomeHandler.generateChunkInfo(chunkPos * 10, UVariables.chunkSize + 1, true), 1 + (UVariables.chunkSize * 2), UVariables.chunkHeight, 1f);
 
-                        chunk.flora.AddRange(floraHandler.addFlora(chunkPos * 10, biomeNoise, chunk));
+                        //chunk.flora.AddRange(floraHandler.addFlora(chunkPos * 10, biomeNoise, chunk));
 
-                        InitializeChunk(ref chunk, chunkPos * 10, chunk.chunkMesh, x, z);
+                        RenderChunk(ref chunk, chunkPos * 10, chunk.chunkMesh, x, z);
 
                         chunk.chunkPos = chunkPos;
 
@@ -142,68 +132,7 @@ public class ChunkHandler : MonoBehaviour
         }
     }
 
-    private void GenerateForestBiome(Vector2Int chunkPosition){
-
-
-        for (int z = 0; z < UVariables.chunkSize * 2; z++){
-            for (int x = 0; x < UVariables.chunkSize * 2; x++)
-            {
-                Vector3 coordPosition = new Vector3(x + (chunkPosition.x * 10), 0, z + (chunkPosition.y * 10));
-                float biome = noiseHandler.Evaluate(coordPosition, 0.007f, 1, 0);
-                int biomeId = biome > 0 ? 1 : 4;
-
-                CoordinateData tempCoordData = WorldData.coordinateData[new Vector2Int((int)coordPosition.x, (int)coordPosition.z)];
-                tempCoordData.biome = biomeId;
-                WorldData.coordinateData[new Vector2Int((int)coordPosition.x, (int)coordPosition.z)] = tempCoordData;
-            }
-        }
-    }
-
-    private int[,,] GenerateChunkInfo(Vector2Int chunkPosition, int chunkSize, bool meshPass){
-
-        int[,,] chunkData = new int[chunkSize * 2, UVariables.chunkHeight, chunkSize * 2];
-
-        for(int z = -chunkSize; z < chunkSize; z++){
-            for(int x = -chunkSize; x < chunkSize; x++){
-
-                Vector2Int realCoord = new Vector2Int(x + (chunkPosition.x) + chunkSize, z + (chunkPosition.y) + chunkSize);
-
-                CoordinateData tempCoordData;
-                BiomeType biome;
-                int noiseValue;
-
-                if(meshPass){
-                    
-                    Vector3 coordPosition = new Vector3(realCoord.x, 0, realCoord.y);
-
-                    float biomeId = noiseHandler.Evaluate(coordPosition, 0.007f, 1, 0);
-                    biome = biomeId > 0 ? Biomes.biomeTypes[1] : Biomes.biomeTypes[4];
-                    noiseValue = (int)noiseHandler.Evaluate(new Vector3(realCoord.x,0,realCoord.y), biome.scale, biome.amplitude, biome.height);
-
-                    for(int i = 0; i < noiseValue; i++){
-                        chunkData[x + chunkSize,i, z + chunkSize] = biome.blockType.id;
-                    }
-                    
-                } else {
-
-                    tempCoordData = WorldData.coordinateData[realCoord];
-                    biome = Biomes.biomeTypes[tempCoordData.biome];
-                    noiseValue = (int)noiseHandler.Evaluate(new Vector3(realCoord.x,0,realCoord.y), biome.scale, biome.amplitude, biome.height);
-                    tempCoordData.heighestBlock = noiseValue;
-                    tempCoordData.blocks[noiseValue] = biome.blockType.id;
-
-                    for(int i = 0; i < noiseValue; i++){
-                        tempCoordData.blocks[i] = biome.blockType.id;
-                        WorldData.coordinateData[realCoord] = tempCoordData;
-                    }
-                }
-            }
-        }
-
-        return chunkData;
-    }
-
-    private void InitializeChunk(ref Chunk chunk, Vector2Int chunkPos, Mesh mesh, int x, int y){
+    private void RenderChunk(ref Chunk chunk, Vector2Int chunkPos, Mesh mesh, int x, int y){
 
         Vector3 truePos = new Vector3(chunkPos.x, 0, chunkPos.y);
 
@@ -214,20 +143,6 @@ public class ChunkHandler : MonoBehaviour
         chunk.chunkObject.AddComponent<MeshRenderer>().material = ground;
         chunk.chunkObject.AddComponent<MeshCollider>();
         chunk.chunkObject.layer = 6;
-    }
-
-    
-
-    private int FindHeighestBlock(int[] blocks){
-
-        int heighestBlock = 0;
-        for(int i = 0; i < UVariables.chunkHeight; i++){
-            if(blocks[i] > 0){
-                heighestBlock = i;
-            }
-        }
-
-        return heighestBlock;
     }
 
     public static Mesh customMesh(int[,,] chunkData, int meshWidth, int meshHeight, float scale){
