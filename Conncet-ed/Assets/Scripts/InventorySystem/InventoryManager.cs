@@ -6,6 +6,11 @@ public class InventoryManager : MonoBehaviour
 {
     public List<Item> _items;
 
+    public List<Item> getItems()
+    {
+        return _items;
+    }
+
     //This method should be used in events like OnItemPickup
     public void addItemToInventory(Item item)
     {
