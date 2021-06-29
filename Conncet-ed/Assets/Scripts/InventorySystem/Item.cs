@@ -1,21 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class Item
+
+[CreateAssetMenu(fileName = "Item", menuName = "Items/BaseItem", order = 1)]
+public class Item : ScriptableObject
 {
     //Attributes
-    private int _id { get; set; }
-    private string _name { get; set; }
-    private int _stackSize { get; set; }
-    private double _weight { get; set; }
-    private Category _category { get; set; }
+    private int _id;
+    public string _name;
+    public int _stackSize;
+    public double _weight;
+    public Category _category;
 
-    //Constructor
-    public Item(string name, int stackSize, double weight, Category category)
+    public string getName()
     {
-        _name = name;
-        _stackSize = stackSize;
-        _weight = weight;
-        _category = category;
+        return _name;
     }
+
+    public int getStackSize()
+    {
+        return _stackSize;
+    }
+
+    public double getWeight()
+    {
+        return _weight;
+    }
+
+    public Category getCategory()
+    {
+        return _category;
+    }
+
 }
