@@ -1,28 +1,16 @@
 fileFormatVersion: 2
-guid: dd0541e2cad5a1c4ea150754553c10a3
+guid: 18b05e2bc87867842838a2db6cc8d56c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1814247922523139758
-    second: butterfly frame by frame 1_0
+      213: -4128887083241503271
+    second: dandelion_0
   - first:
-      213: 1631683068197230915
-    second: butterfly frame by frame 1_1
+      213: 2566547446135029436
+    second: dandelion_1
   - first:
-      213: -755721705034401859
-    second: butterfly frame by frame 1_2
-  - first:
-      213: -6127244341670036987
-    second: butterfly frame by frame 1_3
-  - first:
-      213: -1152991486904392240
-    second: butterfly frame by frame 1_4
-  - first:
-      213: 3080970136419228811
-    second: butterfly frame by frame 1_5
-  - first:
-      213: -5591566547677208009
-    second: butterfly frame by frame 1_6
+      213: 4486573774738015679
+    second: dandelion_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -184,12 +172,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: butterfly frame by frame 1_0
+      name: dandelion_0
       rect:
         serializedVersion: 2
         x: 3
-        y: 18
-        width: 24
+        y: 11
+        width: 8
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -198,103 +186,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2519483702f72d6e0800000000000000
-      internalID: -1814247922523139758
+      spriteID: 9d501b5d21f33b6c0800000000000000
+      internalID: -4128887083241503271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: butterfly frame by frame 1_1
+      name: dandelion_1
       rect:
         serializedVersion: 2
-        x: 31
-        y: 5
-        width: 18
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3495ae10b17e4a610800000000000000
-      internalID: 1631683068197230915
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: butterfly frame by frame 1_2
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 23
-        width: 5
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db73f5efc132385f0800000000000000
-      internalID: -755721705034401859
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: butterfly frame by frame 1_3
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 7
-        width: 15
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 50a3cba1cb7a7faa0800000000000000
-      internalID: -6127244341670036987
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: butterfly frame by frame 1_4
-      rect:
-        serializedVersion: 2
-        x: 58
-        y: 23
-        width: 5
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d5a30af950cfffe0800000000000000
-      internalID: -1152991486904392240
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: butterfly frame by frame 1_5
-      rect:
-        serializedVersion: 2
-        x: 82
-        y: 18
-        width: 24
+        x: 14
+        y: 11
+        width: 8
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -303,20 +207,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8cdad0f30ec1ca20800000000000000
-      internalID: 3080970136419228811
+      spriteID: cbe701add453e9320800000000000000
+      internalID: 2566547446135029436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: butterfly frame by frame 1_6
+      name: dandelion_2
       rect:
         serializedVersion: 2
-        x: 109
-        y: 18
-        width: 24
-        height: 18
+        x: 27
+        y: 11
+        width: 9
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -324,8 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7322ebba9d3c662b0800000000000000
-      internalID: -5591566547677208009
+      spriteID: fb5c7d5c313834e30800000000000000
+      internalID: 4486573774738015679
       vertices: []
       indices: 
       edges: []
@@ -333,7 +237,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c1ea2f55bc5ca2041925c6f1fd75cfd7
+    spriteID: e8ce73a05e7aa404ea2f56af292ef890
     internalID: 0
     vertices: []
     indices: 
