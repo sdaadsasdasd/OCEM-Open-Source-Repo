@@ -12,6 +12,7 @@ public class Item : ScriptableObject
     public int _stackSize;
     public double _weight;
     public Category _category;
+    public Sprite _icon;
 
     public string getName()
     {
@@ -31,6 +32,11 @@ public class Item : ScriptableObject
     public Category getCategory()
     {
         return _category;
+    }
+
+    public Sprite getIcon()
+    {
+        return _icon;
     }
 
     public virtual void Use()
