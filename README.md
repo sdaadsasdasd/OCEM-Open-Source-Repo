@@ -17,7 +17,7 @@ P1 believes Connect=ed might be a great fit for Open Source. We want to test and
 
 Please make sure you have the following prerequisites:
 
-* Unity Version: [2020.3.5](https://store.unity.com/download?ref=personal)
+* Unity Version: [2020.3.12](https://store.unity.com/download?ref=personal)
 * When working with the codebase, we recommend using an IDE with intelligent code completion and syntax highlighting, such as [Visual Studio 2019+](https://visualstudio.microsoft.com/vs/), [JetBrains Rider](https://www.jetbrains.com/rider/), or [Visual Studio Code](https://code.visualstudio.com/).
 * When working with art assets, we are using [Magicavoxel](https://ephtracy.github.io/).
 
