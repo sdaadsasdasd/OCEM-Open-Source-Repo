@@ -60,20 +60,26 @@ public class FloraHandler : MonoBehaviour
                 switch(model){
                     case FloraModel.Flower:{
 
-                        viableFlora = (coordinate.occupancy == Occupancy.Empty || coordinate.occupancy == Occupancy.ShortGrass) && coordinate.biome != Biome.Seabed? true : false;
+                        viableFlora = (coordinate.occupancy == Occupancy.Empty || coordinate.occupancy == Occupancy.ShortGrass) && coordinate.occupancy != Occupancy.TreeFall && coordinate.biome != Biome.Seabed? true : false;
                         floraOccupancy = Occupancy.Occupied;
                         break;
                     }
                     case FloraModel.Grass_Short:{
 
-                        viableFlora = coordinate.occupancy != Occupancy.Occupied && coordinate.biome != Biome.Seabed? true : false;
+                        viableFlora = coordinate.occupancy != Occupancy.Occupied && coordinate.occupancy != Occupancy.TallGrass && coordinate.biome != Biome.Seabed? true : false;
                         floraOccupancy = Occupancy.ShortGrass;
                         break;
                     }
                     case FloraModel.Grass_Tall:{
 
                         viableFlora = coordinate.occupancy != Occupancy.Occupied && coordinate.biome != Biome.Seabed? true : false;
-                        floraOccupancy = Occupancy.Occupied;
+                        floraOccupancy = Occupancy.TallGrass;
+                        break;
+                    }
+                    case FloraModel.Rock:{
+
+                        viableFlora = coordinate.occupancy != Occupancy.Occupied && coordinate.biome != Biome.Seabed? true : false;
+                        floraOccupancy = Occupancy.Empty;
                         break;
                     }
                     default:{
@@ -410,5 +416,6 @@ public enum Occupancy{
     Empty,
     TreeFall,
     ShortGrass,
+    TallGrass,
     Occupied
 }
