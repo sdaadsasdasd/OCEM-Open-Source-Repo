@@ -251,9 +251,11 @@ MonoBehaviour:
   - {fileID: 5935307102520830728, guid: c6f76feefce90e247a38e249f2c14d2f, type: 3}
   xRange: 100
   spawnPosZ: 0
-  startDelay: 2
+  startDelay: 0
   height: 100
-  spawnInterval: 2
+  yRange: 45
+  scaling: 5
+  spawnInterval: 5
 --- !u!4 &488541837
 Transform:
   m_ObjectHideFlags: 0
