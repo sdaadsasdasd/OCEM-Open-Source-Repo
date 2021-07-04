@@ -2,7 +2,7 @@ using UnityEngine;
 
 //All static variables
 
-public static class UVariables
+public static class GlobalVariables
 {
     public static int chunkSize = 5;
     public static int chunkHeight = 50;

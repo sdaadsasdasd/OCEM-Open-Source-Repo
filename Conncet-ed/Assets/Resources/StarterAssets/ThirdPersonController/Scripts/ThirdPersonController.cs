@@ -137,7 +137,9 @@ namespace StarterAssets
 		private Vector2Int CurrentChunk(){//Looks at coordinates to determine the chunk the char is in
 
         	Vector3 playerPos = this.transform.position;
-        	Vector2Int playerChunk = Vector2Int.RoundToInt(new Vector2(playerPos.x, playerPos.z)) / 10;
+			
+        	Vector2Int playerChunk = new Vector2Int((int)((playerPos.x / 10) - 0.5f), (int)((playerPos.z / 10) - 0.5f));
+			//Debug.Log(playerChunk);
 
         	return playerChunk;
     	}
