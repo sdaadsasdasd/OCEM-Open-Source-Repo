@@ -25,7 +25,7 @@ public class ChunkHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        BlocksTypes.initializeBlocks();
+        Blocks.initializeBlocks();
         biomeHandler.initializeBiomes();
         floraHandler.initializeFloraHandler();
 
@@ -57,9 +57,9 @@ public class ChunkHandler : MonoBehaviour
                         chunk = new Chunk(); //Generate and add to dictionary
 
                         AddBlockCoordsToDictionary(chunkPos * 10, ref chunk);
-                        biomeHandler.generateChunkInfo(chunkPos * 10, GlobalVariables.chunkSize, false);
+                        biomeHandler.terrainNoise(chunkPos * 10, GlobalVariables.chunkSize);
 
-                        chunk.chunkMesh = customMesh(biomeHandler.generateChunkInfo(chunkPos * 10, GlobalVariables.chunkSize + 1, true), 1 + (GlobalVariables.chunkSize * 2), GlobalVariables.chunkHeight, 1f);
+                        chunk.chunkMesh = customMesh(biomeHandler.terrainNoise(chunkPos * 10, GlobalVariables.chunkSize + 1), 1 + (GlobalVariables.chunkSize * 2), GlobalVariables.chunkHeight, 1f);
                         
                         chunk.flora.AddRange(floraHandler.addFlora(chunkPos * 10, chunk));
 
@@ -219,7 +219,7 @@ public class ChunkHandler : MonoBehaviour
                         for(int i = 0; i < numFaces; i++)
                         {
                             triangles.AddRange(new int[] {tl + i * 4, tl + i * 4 + 1, tl + i * 4 + 2, tl + i * 4, tl + i * 4 + 2, tl + i * 4 + 3});
-                            uvs.AddRange(SetUVs(BlocksTypes.blockTypes[chunkData[x,y,z]]));
+                            uvs.AddRange(SetUVs(Blocks.blockTypes[chunkData[x,y,z]]));
                         }
                     }
                 }
@@ -239,10 +239,10 @@ public class ChunkHandler : MonoBehaviour
         Vector2 textureCoords = new Vector2(blockType.textureCoords.x / 16f, blockType.textureCoords.y / 16f);
 
         List<Vector2> uvs = new List<Vector2>();
-        uvs.Add(new Vector2(0,0)                + textureCoords);
-        uvs.Add(new Vector2(0.0625f,0)          + textureCoords);
-        uvs.Add(new Vector2(0.0625f,0.0625f)    + textureCoords);
-        uvs.Add(new Vector2(0,0.0625f)          + textureCoords);
+        uvs.Add(new Vector2(0,0)                                                             + textureCoords);
+        uvs.Add(new Vector2(GlobalVariables.pixelIncrements,0)                               + textureCoords);
+        uvs.Add(new Vector2(GlobalVariables.pixelIncrements,GlobalVariables.pixelIncrements) + textureCoords);
+        uvs.Add(new Vector2(0,GlobalVariables.pixelIncrements)                               + textureCoords);
         
         return uvs;
     }
