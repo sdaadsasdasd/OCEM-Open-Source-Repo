@@ -56,9 +56,9 @@ public class FloraHandler : MonoBehaviour
                 Occupancy floraOccupancy;
                 GameObject model;
                 Vector3 extra = new Vector3();
-
+                        
                 switch(type){
-                    case FloraType.Flower:{
+                    case FloraModel.Flower:{
                         switch(Random.Range(1,4)){
                             case 1:{
                                 model = flower_1;
@@ -67,7 +67,7 @@ public class FloraHandler : MonoBehaviour
                             }
                             case 2:{
                                 model = flower_2;
-                                extra = new Vector3(0,0.26f,0);
+                                extra = new Vector3(0,-0.05f,0);
                                 break;
                             }
                             default:{
@@ -76,7 +76,6 @@ public class FloraHandler : MonoBehaviour
                                 break;
                             }
                         }
-
                         viableFlora = (coordinate.occupancy == Occupancy.Empty || coordinate.occupancy == Occupancy.ShortGrass) && coordinate.occupancy != Occupancy.TreeFall && coordinate.biome != Biome.Seabed? true : false;
                         floraOccupancy = Occupancy.Occupied;
                         break;
@@ -100,6 +99,7 @@ public class FloraHandler : MonoBehaviour
                         viableFlora = coordinate.occupancy != Occupancy.Occupied && coordinate.biome != Biome.Seabed? true : false;
                         floraOccupancy = Occupancy.Empty;
                         model = rock;
+=======
                         break;
                     }
                     default:{
