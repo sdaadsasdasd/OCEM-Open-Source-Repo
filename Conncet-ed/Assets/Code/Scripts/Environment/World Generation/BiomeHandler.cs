@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BiomeHandler : MonoBehaviour
 {
-    public static Dictionary<Biome, BiomeData> biomeTypes = new Dictionary<Biome, BiomeData>();
+    public static Dictionary<string, NoiseSetting> biomeNoises = new Dictionary<string, NoiseSetting>();
+    public static Dictionary<Biome, BlockType> biomes =  new Dictionary<Biome, BlockType>();
 
-    Noise mapNoise;
     NoiseHandler noiseHandler = new NoiseHandler();
     NoiseSetting biomeNoise;
 
@@ -14,67 +14,33 @@ public class BiomeHandler : MonoBehaviour
 
     public void initializeBiomes(){
 
-        List<NoiseSetting> noiseSettings = new List<NoiseSetting>();
-        noiseSettings.Add(new NoiseSetting(0.002f, 0.8f, 1.5f, new Noise(seed)));
-        noiseSettings.Add(new NoiseSetting(0.015f, -0.2f, 0.2f, new Noise(seed + 1)));
+        biomes.Add(Biome.Seabed, Blocks.blockTypes[3]);
+        biomes.Add(Biome.Grassy, Blocks.blockTypes[1]);
+        biomes.Add(Biome.Forest, Blocks.blockTypes[4]);
 
-        BiomeData Grassy = new BiomeData(BlocksTypes.blockTypes[1], noiseSettings);
-        biomeTypes.Add(Biome.Grassy, Grassy);
-
-        noiseSettings = new List<NoiseSetting>();
-        noiseSettings.Add(new NoiseSetting(0.002f, 0.8f, 1.5f, new Noise(seed)));
-        noiseSettings.Add(new NoiseSetting(0.015f, -0.2f, 0.2f, new Noise(seed + 1)));
-
-        BiomeData Sea = new BiomeData(BlocksTypes.blockTypes[3], noiseSettings);
-        biomeTypes.Add(Biome.Seabed, Sea);
-
-        noiseSettings = new List<NoiseSetting>();
-        noiseSettings.Add(new NoiseSetting(0.002f, 0.8f, 1.5f, new Noise(seed)));
-        noiseSettings.Add(new NoiseSetting(0.015f, -0.2f, 0.2f, new Noise(seed + 1)));
-
-        BiomeData Forest = new BiomeData(BlocksTypes.blockTypes[4], noiseSettings);
-        biomeTypes.Add(Biome.Forest, Forest);
-
-        mapNoise = new Noise(seed);
-        biomeNoise = new NoiseSetting(0.005f, -0.8f, 0.8f, new Noise(seed + 2));
-
-
+        biomeNoises.Add("Global Wide Noise",        new NoiseSetting(0.003f, -0.7f, 0.9f, new Noise(seed)));
+        biomeNoises.Add("Global Biome Roughness",   new NoiseSetting(0.025f, -0.1f, 0.1f, new Noise(seed + 3))); 
+        biomeNoises.Add("Global Roughness",         new NoiseSetting(0.025f, -0.1f, 0.1f, new Noise(seed))); 
+        biomeNoises.Add("Grassy Biome Noise",       new NoiseSetting(0.005f, -1f, 1f, new Noise(seed + 1))); 
+        biomeNoises.Add("Forest Biome Noise",       new NoiseSetting(0.005f, -1f, 1f, new Noise(seed + 2))); 
+        biomeNoises.Add("Land Hillyness",           new NoiseSetting(0.01f, 0f, 0.5f, new Noise(seed + 2))); 
     }
 
-    public int[,,] generateChunkInfo(Vector2Int chunkPosition, int chunkSize, bool meshPass){
-
-        int[,,] chunkData = TerrainNoiseFilter(chunkPosition, chunkSize);
-
-        return chunkData;
-    }
-
-    private int[,,] TerrainNoiseFilter(Vector2Int chunkPosition, int chunkSize){
+    public int[,,] terrainNoise(Vector2Int chunkPosition, int chunkSize){
 
         int[,,] terrainData = new int[chunkSize * 2, GlobalVariables.chunkHeight,chunkSize * 2];  
 
         for(int z = -chunkSize; z < chunkSize; z++){
             for(int x = -chunkSize; x < chunkSize; x++){
 
-                Vector2Int realCoord = chunkPosition + new Vector2Int(x, z);
-                Vector3 realPosition = new Vector3(realCoord.x, 0, realCoord.y);
+                Vector2Int coord = chunkPosition + new Vector2Int(x, z);
+                Vector3 realPosition = new Vector3(coord.x, 0, coord.y);
 
-                float seaNumber = noiseHandler.Evaluate(realPosition, 0.003f, -0.7f, 0.9f, mapNoise);
-                float levelGround = Mathf.Clamp(seaNumber / 2, 0, 0.5f);
-                float roughness = noiseHandler.Evaluate(realPosition, 0.025f, -0.1f, 0.1f, mapNoise);
-                float hillyness = noiseHandler.Evaluate(realPosition, 0.01f, 0f, 0.5f, mapNoise) * roughness * 2;
+                Biome biome = GenerateBiomeNumber(realPosition);
 
-                Biome biome = seaNumber + roughness > 0 ? Biome.Grassy : Biome.Seabed;
-                
-                float forest = noiseHandler.Evaluate(realPosition, 0.005f, -1f, 1f, biomeNoise.noise);
+                int height = (int)(20 * GenerateHeightFactor(biome,realPosition));
 
-                if(biome == Biome.Grassy)
-                biome =  forest < 0 ? Biome.Grassy : Biome.Forest;
-
-                float multiple = 1 + seaNumber - levelGround + roughness + hillyness;
-
-                int height = (int)(20 * multiple);
-
-                int blockId = biomeTypes[biome].blockType.id;
+                int blockId = biomes[biome].id;
                 terrainData[x + chunkSize,height,z + chunkSize] = blockId;
 
                 for(int y = 0; y < height; y++){
@@ -82,18 +48,18 @@ public class BiomeHandler : MonoBehaviour
                     terrainData[x + chunkSize,y,z + chunkSize] = blockId;
                 }
 
-                if(WorldData.coordinateData.ContainsKey(realCoord)){
+                if(WorldData.coordinateData.ContainsKey(coord)){
 
-                    CoordinateData coordinate = WorldData.coordinateData[realCoord];
+                    CoordinateData coordinate = WorldData.coordinateData[coord];
                     coordinate.biome = biome;
                     coordinate.blocks = new int[GlobalVariables.chunkHeight];
                     coordinate.heighestBlock = height;
                     for(int y = 0; y < height; y++){
 
-                        coordinate.blocks[y] = biomeTypes[biome].blockType.id;
+                        coordinate.blocks[y] = biomes[biome].id;
                     }
 
-                    WorldData.coordinateData[realCoord] = coordinate;
+                    WorldData.coordinateData[coord] = coordinate;
                 }
             }
         }
@@ -101,40 +67,77 @@ public class BiomeHandler : MonoBehaviour
         return terrainData;
     }
 
-    private void SeaGenerationPass(Vector2Int chunkPosition){
-        //Deep Area
-        //Lagoon Area
-        //Beach
-        //Land
+    private Biome GenerateBiomeNumber(Vector3 realPosition){
 
-        for (int z = 0; z < GlobalVariables.chunkSize * 2; z++){
-            for (int x = 0; x < GlobalVariables.chunkSize * 2; x++)
-            {
-                Vector3 coordPosition = new Vector3(x + (chunkPosition.x * 10), 0, z + (chunkPosition.y * 10));
-                float biome = 1;//noiseHandler.Evaluate(coordPosition, 0.007f, 1, 0, noi);
-                Biome biomeId = biome > 0 ? Biome.Grassy : Biome.Forest;
+        //Create static noise settings 
+        //Each biome a specific seed
+        //Generate a float number for every biome
+            //First comes sea
+            //Index 0 is Grassy
+            //Index 1 is Forest
+        //Save the highest number and use that
 
-                CoordinateData tempCoordData = WorldData.coordinateData[new Vector2Int((int)coordPosition.x, (int)coordPosition.z)];
-                tempCoordData.biome = biomeId;
-                WorldData.coordinateData[new Vector2Int((int)coordPosition.x, (int)coordPosition.z)] = tempCoordData;
-            }
+        float globalWideNoise = noiseHandler.Evaluate(realPosition, biomeNoises["Global Wide Noise"]);
+        float globalRoughness = noiseHandler.Evaluate(realPosition, biomeNoises["Global Biome Roughness"]);
+
+        Biome biome = globalWideNoise + globalRoughness > 0 ? Biome.Grassy : Biome.Seabed;
+
+        if(biome == Biome.Grassy){
+
+            float[] biomeNumbers = new float[2];
+
+            biomeNumbers[0] = noiseHandler.Evaluate(realPosition, biomeNoises["Grassy Biome Noise"]);
+            biomeNumbers[1] = noiseHandler.Evaluate(realPosition, biomeNoises["Forest Biome Noise"]);
+
+            biome = biomeNumbers[0] >= biomeNumbers[1] ? Biome.Grassy : Biome.Forest;
         }
+
+        return biome;
     }
 
-    private void GenerateForestBiome(Vector2Int chunkPosition){
+    private float GenerateHeightFactor(Biome biome, Vector3 realPosition){
 
-        for (int z = 0; z < GlobalVariables.chunkSize * 2; z++){
-            for (int x = 0; x < GlobalVariables.chunkSize * 2; x++)
-            {
-                Vector3 coordPosition = new Vector3(x + (chunkPosition.x * 10), 0, z + (chunkPosition.y * 10));
-                float biome = 1;// noiseHandler.Evaluate(coordPosition, 0.007f, 1, 0);
-                Biome biomeId = biome > 0 ? Biome.Grassy : Biome.Forest;
+        //Have compatibility with multiple noise functions for every biome.
+        //Create mask noises for everybiome
 
-                CoordinateData tempCoordData = WorldData.coordinateData[new Vector2Int((int)coordPosition.x, (int)coordPosition.z)];
-                tempCoordData.biome = biomeId;
-                WorldData.coordinateData[new Vector2Int((int)coordPosition.x, (int)coordPosition.z)] = tempCoordData;
+        float multiple = 1;
+
+        float globalWideNoise = noiseHandler.Evaluate(realPosition, biomeNoises["Global Wide Noise"]);
+        multiple += noiseHandler.Evaluate(realPosition, biomeNoises["Global Roughness"]) + globalWideNoise;
+
+        switch(biome){
+            case Biome.Seabed:{
+
+                
+                break;
+            }
+            case Biome.Grassy:{
+
+                float maskSea = Mathf.Clamp(globalWideNoise * 2f, 0, 1);
+                float hillyness = noiseHandler.Evaluate(realPosition, biomeNoises["Land Hillyness"]) * maskSea;
+
+                float levelGround = Mathf.Clamp(globalWideNoise / 1.5f, 0f, 0.5f);
+
+                multiple += hillyness;
+                multiple -= levelGround;
+
+                break;
+            }
+            case Biome.Forest:{
+
+                float maskSea = Mathf.Clamp(globalWideNoise * 2f, 0, 1);
+                float hillyness = noiseHandler.Evaluate(realPosition, biomeNoises["Land Hillyness"]) * maskSea;
+
+                float levelGround = Mathf.Clamp(globalWideNoise / 1.5f, 0f, 0.75f);
+
+                multiple += hillyness;
+                multiple -= levelGround;
+
+                break;  
             }
         }
+
+        return multiple;
     }
 }
 
@@ -172,13 +175,11 @@ public enum Operation{
     Add,
     Subract,
     Multiply,
-    Divide,
-    Null
+    Divide
 }
 public enum Biome{
 
-    Grassy,
-    Beachy,
     Seabed,
-    Forest
+    Grassy = 1,
+    Forest = 2
 }

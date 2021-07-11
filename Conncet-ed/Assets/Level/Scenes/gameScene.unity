@@ -551,9 +551,9 @@ MonoBehaviour:
   sun: {fileID: 1548617660}
   sunColor:
     serializedVersion: 2
-    key0: {r: 0.9622642, g: 0.38141012, b: 0, a: 1}
-    key1: {r: 0.9245283, g: 0.9018904, b: 0.8329477, a: 1}
-    key2: {r: 0.9622642, g: 0.4112237, b: 0, a: 0}
+    key0: {r: 1, g: 0.75332725, b: 0, a: 1}
+    key1: {r: 0.94509804, g: 0.80784315, b: 0.39607844, a: 1}
+    key2: {r: 1, g: 0.59284186, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -614,9 +614,9 @@ MonoBehaviour:
   moon: {fileID: 788332747}
   moonColor:
     serializedVersion: 2
-    key0: {r: 0.8632076, g: 0.9243619, b: 1, a: 1}
-    key1: {r: 0, g: 0.5719719, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 0.13679248, g: 0.5774018, b: 1, a: 1}
+    key1: {r: 0, g: 0.6466632, b: 1, a: 1}
+    key2: {r: 0, g: 0.6466632, b: 1, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -624,7 +624,7 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 65535
-    ctime2: 0
+    ctime2: 65535
     ctime3: 0
     ctime4: 0
     ctime5: 0
@@ -1754,6 +1754,9 @@ MonoBehaviour:
   flower_1: {fileID: 816742121450866999, guid: 183ac8f8a4daf3041aed3be35ca2758e, type: 3}
   flower_2: {fileID: 666866771022916464, guid: e35639598afe67d408003c8dc5b216fc, type: 3}
   flower_3: {fileID: 1917347457978819493, guid: 86c8ec398664b4e40911a2a49252c0f9, type: 3}
+  shroom_1: {fileID: 8463090430210504429, guid: 351388427665e444f806c3a60dae5b86, type: 3}
+  shroom_2: {fileID: 7983353155411788240, guid: 13c997b26afb40f468ff5d3973d1954f, type: 3}
+  shroom_3: {fileID: 8676950434232559054, guid: ebe05db3c09952a4688c4ba86d939c4d, type: 3}
   parent: {fileID: 35142255}
 --- !u!4 &1345406704
 Transform:
