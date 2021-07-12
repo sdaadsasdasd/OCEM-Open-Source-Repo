@@ -7,25 +7,57 @@ namespace StarterAssets
 {
 	public class StarterAssetsInputs : MonoBehaviour
 	{
+        public energyBar eRef;
+        public healthBar hRef;
+
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+        private float maxEnergy = 10; //Editable
+        private float maxHealth = 100; //Editable
+        public float currentEnergy ; //Editable
+        public float currentHealth ; //Editable
+		public float timerEnergy = 360;
 
-		[Header("Movement Settings")]
+
+        [Header("Movement Settings")]
 		public bool analogMovement;
 
 		[SerializeField] private UIController uiControl;
 
+        private void Start()
+        {
+            currentEnergy = maxEnergy;
+            currentHealth = maxHealth;
+            eRef.setMaxEnergy(currentEnergy);
+            hRef.setMaxHealth(currentHealth);
+        }
+        private void Update()
+        {
+			if (timerEnergy > 0)
+				timerEnergy -= Time.deltaTime;
+			else
+			{
+				currentEnergy--;
+				timerEnergy = 360;
+			}
+            hRef.setHealth(currentHealth);
+			eRef.setEnergy(currentEnergy);
+
+        }
+
 #if !UNITY_IOS || !UNITY_ANDROID
-		[Header("Mouse Cursor Settings")]
+        [Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 #endif
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-		public void OnMove(InputValue value)
+
+
+        public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}
@@ -41,12 +73,14 @@ namespace StarterAssets
 		public void OnJump(InputValue value)
 		{
 			JumpInput(value.isPressed);
+            currentHealth--;
+            
 		}
 
 		public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
-		}
+        }
 
 		public void OnMenu(InputValue value)
 		{
@@ -68,7 +102,7 @@ namespace StarterAssets
 #endif
 
 
-		public void MoveInput(Vector2 newMoveDirection)
+            public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		} 
