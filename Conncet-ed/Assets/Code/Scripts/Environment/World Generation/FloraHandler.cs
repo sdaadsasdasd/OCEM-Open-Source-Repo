@@ -58,7 +58,7 @@ public class FloraHandler : MonoBehaviour
                 Vector3 extra = new Vector3();
                         
                 switch(type){
-                    case FloraModel.Flower:{
+                    case FloraType.Flower:{
                         switch(Random.Range(1,4)){
                             case 1:{
                                 model = flower_1;
@@ -99,7 +99,6 @@ public class FloraHandler : MonoBehaviour
                         viableFlora = coordinate.occupancy != Occupancy.Occupied && coordinate.biome != Biome.Seabed? true : false;
                         floraOccupancy = Occupancy.Empty;
                         model = rock;
-=======
                         break;
                     }
                     default:{
