@@ -8,20 +8,15 @@ public class Item : ScriptableObject
 {
     //Attributes
     private int _id;
-    public string _name;
-    public int _stackSize;
-    public double _weight;
-    public Category _category;
-    public Sprite _icon;
+    [SerializeField] private string _displayName;
+    [SerializeField] private double _weight;
+    [SerializeField] private Category _category;
+    [SerializeField] private Sprite _icon;
+
 
     public string getName()
     {
-        return _name;
-    }
-
-    public int getStackSize()
-    {
-        return _stackSize;
+        return _displayName;
     }
 
     public double getWeight()
