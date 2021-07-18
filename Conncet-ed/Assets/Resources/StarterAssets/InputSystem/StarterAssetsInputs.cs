@@ -92,7 +92,8 @@ namespace StarterAssets
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
-			SetCursorState(cursorLocked);
+			//this messes with my ui script so we dont need it
+			//SetCursorState(cursorLocked);
 		}
 
 		public void SetCursorState(bool newState)
