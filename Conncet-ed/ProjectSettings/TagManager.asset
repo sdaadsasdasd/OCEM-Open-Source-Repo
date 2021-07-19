@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
+  - Flammable
+  - Flamer
+  - edible
   layers:
   - Default
   - TransparentFX
