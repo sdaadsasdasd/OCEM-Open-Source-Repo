@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d003987b9ef1949b481489974c598a, type: 3}
   m_Name: Block
   m_EditorClassIdentifier: 
-  _displayName: Block of Nothing
+  _displayName: Meaningless Item
   _weight: 0.01
   _category: 0
   _icon: {fileID: -1814247922523139758, guid: dd0541e2cad5a1c4ea150754553c10a3, type: 3}

@@ -8,10 +8,7 @@ public abstract class Slot : MonoBehaviour
     private int id;
     protected ItemStack item;
     public Image img;
-    public TMPro.TMP_Text text;
-
-    [SerializeField] private Item startItem = null;
-    [SerializeField] private int startItemCount = 0;
+    public TMPro.TMP_Text countText;
 
     public void Update()
     {
@@ -19,20 +16,13 @@ public abstract class Slot : MonoBehaviour
         {
             img.sprite = item.getIcon();
             img.color = Color.white;
-            text.text = item.getStackSize().ToString();
+            countText.text = item.getStackSize().ToString();
         }
         else
         {
             img.color = Color.clear;
             img.sprite = null;
-            text.text = "";
-        }
-    }
-    public void Start()
-    {
-        if(startItem != null && startItemCount > 0)
-        {
-            this.setItem(new ItemStack(startItem, startItemCount));
+            countText.text = "";
         }
     }
 
