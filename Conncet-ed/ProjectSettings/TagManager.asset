@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
+  - Flammable
+  - Flamer
+  - Water
+  - Terain
   layers:
   - Default
   - TransparentFX

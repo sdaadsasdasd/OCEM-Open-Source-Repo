@@ -12,6 +12,7 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+        public bool interact;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -42,8 +43,12 @@ namespace StarterAssets
 		{
 			JumpInput(value.isPressed);
 		}
+        public void OnInteract(InputValue value)
+        {
+            InteractInput(value.isPressed);
+        }
 
-		public void OnSprint(InputValue value)
+        public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
 		}
@@ -87,10 +92,14 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
+        public void InteractInput(bool newInteractState)
+        {
+            interact = newInteractState;
+        }
 
 #if !UNITY_IOS || !UNITY_ANDROID
 
-		private void OnApplicationFocus(bool hasFocus)
+        private void OnApplicationFocus(bool hasFocus)
 		{
 			//this messes with my ui script so we dont need it
 			//SetCursorState(cursorLocked);
