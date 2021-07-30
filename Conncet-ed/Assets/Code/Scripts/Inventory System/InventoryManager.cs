@@ -132,20 +132,24 @@ public class InventoryManager : MonoBehaviour
             }
             else
             {
-                if (isNullOrEmpty(source.getItem()) || source.getItem().getName() == _cursorSlot.getItem().getName())
+                if (canGetItems)
                 {
-                    _cursorSlot.getItem().incrementCount(-1);
-                    if(!isNullOrEmpty(source.getItem()))
+                    if (isNullOrEmpty(source.getItem()) || source.getItem().getName() == _cursorSlot.getItem().getName())
                     {
-                        source.getItem().incrementCount(1);
-                    }
-                    else
-                    {
-                        ItemStack newIt = _cursorSlot.getItem().copy();
-                        newIt.setStackSize(1);
-                        source.setItem(newIt);
+                        _cursorSlot.getItem().incrementCount(-1);
+                        if(!isNullOrEmpty(source.getItem()))
+                        {
+                            source.getItem().incrementCount(1);
+                        }
+                        else
+                        {
+                            ItemStack newIt = _cursorSlot.getItem().copy();
+                            newIt.setStackSize(1);
+                            source.setItem(newIt);
+                        }
                     }
                 }
+                
             }
         }
         if (isNullOrEmpty(_cursorSlot.getItem()))
