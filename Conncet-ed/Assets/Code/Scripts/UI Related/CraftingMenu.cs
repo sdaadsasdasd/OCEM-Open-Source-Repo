@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class CraftingMenu : MonoBehaviour
 {
+    
     //list of screens to toggle on/off
     [SerializeField] private List<GameObject> screens;
 
@@ -16,6 +17,8 @@ public class CraftingMenu : MonoBehaviour
 
     //is the menu visisble
     private bool menuVisible;
+
+    
 
     private void Start()
     {
@@ -49,4 +52,5 @@ public class CraftingMenu : MonoBehaviour
     {
         return menuVisible;
     }
+
 }

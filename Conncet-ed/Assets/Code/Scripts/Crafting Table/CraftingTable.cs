@@ -7,19 +7,11 @@ public class CraftingTable : MonoBehaviour
 
     bool is_player_close = false;
 
-    public GameObject item_1;
-    public GameObject item_2;
-    public GameObject result;
-
     GameObject crafting_menu;
 
     private void Awake()
     {
         crafting_menu = GameObject.Find("/Canvas/Crafting Menu");
-
-        item_1 = null;
-        item_2 = null;
-        result = null;
     }
 
     void Start()
