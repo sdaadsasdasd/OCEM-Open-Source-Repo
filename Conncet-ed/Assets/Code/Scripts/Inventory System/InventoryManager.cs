@@ -79,7 +79,7 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-    public void Click(PointerEventData data, ContainerSlot source)
+    public void Click(PointerEventData data, ContainerSlot source, bool canGetItems)
     {
         if (isNullOrEmpty(_cursorSlot.getItem()))
             _cursorSlot.removeItem();
@@ -102,14 +102,17 @@ public class InventoryManager : MonoBehaviour
             else
             {
                 //if cursor has item
-                if (isNullOrEmpty(source.getItem()) || source.getItem().getName() == _cursorSlot.getItem().getName())
+                if (canGetItems)
                 {
-                    //if slot under cursor has no item/item can be merged, put from cursor into slot
-                    ItemStack moved = _cursorSlot.removeItem();
-                    int newSize = moved.getStackSize() + (source.getItem() == null ? 0 : source.getItem().getStackSize());
-                    moved.setStackSize(newSize);
-                    source.setItem(moved);
-                }
+                    if (isNullOrEmpty(source.getItem()) || source.getItem().getName() == _cursorSlot.getItem().getName())
+                    {
+                        //if slot under cursor has no item/item can be merged, put from cursor into slot
+                        ItemStack moved = _cursorSlot.removeItem();
+                        int newSize = moved.getStackSize() + (source.getItem() == null ? 0 : source.getItem().getStackSize());
+                        moved.setStackSize(newSize);
+                        source.setItem(moved);
+                    }
+                } 
             }
         }
         else if(data.button == PointerEventData.InputButton.Right)
@@ -151,7 +154,7 @@ public class InventoryManager : MonoBehaviour
         if (isNullOrEmpty(source.getItem()))
             source.removeItem();
     }
-    public void Scroll(PointerEventData data, ContainerSlot source)
+    public void Scroll(PointerEventData data, ContainerSlot source, bool canGetItems)
     {
         if (isNullOrEmpty(_cursorSlot.getItem()))
             _cursorSlot.removeItem();
@@ -163,29 +166,32 @@ public class InventoryManager : MonoBehaviour
         int scrollAmount = (int)data.scrollDelta.y / 6;
 
         //scroll up (deposit from cursor into)
-        if (scrollAmount > 0)
+        if (canGetItems)
         {
-            if(!isNullOrEmpty(_cursorSlot.getItem()) && (source.getItem() == null || source.getItem().getName() == _cursorSlot.getItem().getName()))
+            if (scrollAmount > 0)
             {
-                if (_cursorSlot.getItem().getStackSize() < scrollAmount)
+                if(!isNullOrEmpty(_cursorSlot.getItem()) && (source.getItem() == null || source.getItem().getName() == _cursorSlot.getItem().getName()))
                 {
-                    scrollAmount = _cursorSlot.getItem().getStackSize();
-                }
-                _cursorSlot.getItem().incrementCount(-scrollAmount);
-                if (source.getItem() != null)
-                {
-                    source.getItem().incrementCount(scrollAmount);
-                }
-                else
-                {
-                    ItemStack newIt = _cursorSlot.getItem().copy();
-                    newIt.setStackSize(scrollAmount);
-                    source.setItem(newIt);
+                    if (_cursorSlot.getItem().getStackSize() < scrollAmount)
+                    {
+                        scrollAmount = _cursorSlot.getItem().getStackSize();
+                    }
+                    _cursorSlot.getItem().incrementCount(-scrollAmount);
+                    if (source.getItem() != null)
+                    {
+                        source.getItem().incrementCount(scrollAmount);
+                    }
+                    else
+                    {
+                        ItemStack newIt = _cursorSlot.getItem().copy();
+                        newIt.setStackSize(scrollAmount);
+                        source.setItem(newIt);
+                    }
                 }
             }
         }
         //scroll down (take item from slot)
-        else if (scrollAmount < 0 && source.getItem() != null)
+        if (scrollAmount < 0 && source.getItem() != null)
         {
             if (!isNullOrEmpty(source.getItem()) && (_cursorSlot.getItem() == null || source.getItem().getName() == _cursorSlot.getItem().getName()))
             {

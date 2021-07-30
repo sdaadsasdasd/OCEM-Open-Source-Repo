@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ContainerSlot : Slot, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IScrollHandler
 {
     public ItemContainer container;
+    [SerializeField] bool canGetItems = true;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -33,11 +34,11 @@ public class ContainerSlot : Slot, IDragHandler, IBeginDragHandler, IEndDragHand
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        container.Click(eventData, this);
+        container.Click(eventData, this, canGetItems);
     }
     public void OnScroll(PointerEventData eventData)
     {
-        container.Scroll(eventData, this);
+        container.Scroll(eventData, this, canGetItems);
     }
     public void Start()
     {

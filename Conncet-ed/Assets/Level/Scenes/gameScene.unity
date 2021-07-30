@@ -180,6 +180,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1482151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,6 +601,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &22652276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,6 +697,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &29148295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,6 +1091,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &44847295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1255,6 +1259,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &57737078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1752,6 +1757,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &125967527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2056,6 +2062,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &156385321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2151,6 +2158,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &164887630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2717,6 +2725,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1151527847}
+  canGetItems: 1
 --- !u!114 &186992576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3034,6 +3043,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &229839185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3129,6 +3139,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &230826749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4003,6 +4014,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &319953756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4918,6 +4930,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &397904565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5088,6 +5101,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &417641599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5449,6 +5463,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &426674724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5607,6 +5622,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &460919477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6822,6 +6838,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &541151330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6917,6 +6934,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &573675729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7012,6 +7030,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1931748914}
+  canGetItems: 1
 --- !u!114 &587640366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7107,6 +7126,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &588188753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7277,6 +7297,7 @@ MonoBehaviour:
   startItem: {fileID: 11400000, guid: c5664538ebca82544be8a611b0cf3f14, type: 2}
   startItemCount: 50
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &591434529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7372,6 +7393,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1151527847}
+  canGetItems: 1
 --- !u!114 &595931027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7467,6 +7489,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &597749923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7637,6 +7660,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &609542010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7866,6 +7890,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &677899581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8856,6 +8881,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &747532621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9176,6 +9202,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &782764392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10269,6 +10296,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1151527847}
+  canGetItems: 1
 --- !u!114 &848325457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11618,6 +11646,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1059117590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11997,6 +12026,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1151527847}
+  canGetItems: 1
 --- !u!114 &1121391651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12314,6 +12344,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1163066960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12618,6 +12649,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1151527847}
+  canGetItems: 1
 --- !u!114 &1177271413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12847,6 +12879,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1151527847}
+  canGetItems: 1
 --- !u!114 &1199466750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12942,6 +12975,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1151527847}
+  canGetItems: 1
 --- !u!114 &1220490810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13455,6 +13489,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1258131016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13992,6 +14027,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1151527847}
+  canGetItems: 1
 --- !u!114 &1352501820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14401,6 +14437,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1399908065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14496,6 +14533,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1406881075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15336,6 +15374,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1462934445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15999,6 +16038,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1531557432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16378,6 +16418,7 @@ MonoBehaviour:
   startItem: {fileID: 11400000, guid: 0c508c992827cb34eb06e575664eb6bc, type: 2}
   startItemCount: 300
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1548464341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16727,6 +16768,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1565226313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16897,6 +16939,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1586409156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16992,6 +17035,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1595431398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17162,6 +17206,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1616243106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17600,6 +17645,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1668133657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17906,6 +17952,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1727317284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18151,6 +18198,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1151527847}
+  canGetItems: 1
 --- !u!114 &1745407850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18380,6 +18428,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1151527847}
+  canGetItems: 1
 --- !u!114 &1751348535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18475,6 +18524,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1931748914}
+  canGetItems: 1
 --- !u!114 &1777395453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18704,6 +18754,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1799956278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18799,6 +18850,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1802159954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18894,6 +18946,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1804428494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19886,6 +19939,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1910469857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20056,6 +20110,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1930576873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20538,6 +20593,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1959968020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20901,6 +20957,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1976008241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20996,6 +21053,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &1983314486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21091,6 +21149,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 1931748914}
+  canGetItems: 0
 --- !u!114 &2005327975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21320,6 +21379,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &2016623791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21817,6 +21877,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &2030153928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21912,6 +21973,7 @@ MonoBehaviour:
   startItem: {fileID: 0}
   startItemCount: 0
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &2031302032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35090,6 +35152,7 @@ MonoBehaviour:
   startItem: {fileID: 11400000, guid: 8ae747ada33458d4e826474c02741595, type: 2}
   startItemCount: 20
   container: {fileID: 8939702465063747210}
+  canGetItems: 1
 --- !u!114 &8939702466902471020
 MonoBehaviour:
   m_ObjectHideFlags: 0

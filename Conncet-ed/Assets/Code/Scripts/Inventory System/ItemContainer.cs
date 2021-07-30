@@ -44,13 +44,13 @@ public class ItemContainer : MonoBehaviour
     {
 
     }
-    public void Click(PointerEventData data, ContainerSlot source)
+    public void Click(PointerEventData data, ContainerSlot source, bool canGetItems)
     {
-        manager.Click(data, source);
+        manager.Click(data, source, canGetItems);
     }
-    public void Scroll(PointerEventData data, ContainerSlot source)
+    public void Scroll(PointerEventData data, ContainerSlot source, bool canGetItems)
     {
-        manager.Scroll(data, source);
+        manager.Scroll(data, source, canGetItems);
     }
 
     internal bool isFull()
