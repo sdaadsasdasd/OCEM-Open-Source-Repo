@@ -1,0 +1,4 @@
+1) Open the game jam scene
+2) Delete, reuse, edit as you wish
+3) Publish as a new branch starting with game-jam-your-name
+4) More tips: https://youtu.be/tHaQhTNUWhQ
